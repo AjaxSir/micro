@@ -1,20 +1,27 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 
+// import start from '@/micro' 
+// start() 主应用配置
+
+// 父子应用通信 方法2 vuex-micro-frontends.
+
+import VueRouter from 'vue-router'
+import utils from 'pro-fn-tool'
 import App from './App.vue'
 import routes from './router'
-
-Vue.use(VueRouter)
+// import microStore from './store'
+// Vue.prototype.microStore = microStore 子应用自己的store 访问时 采用 this.microStore.state.count
 Vue.config.productionTip = false
-
+Vue.prototype.$utils = utils
 let instance = null
 let router = null
     /**
      * 渲染函数
      * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
      */
-function render() {
-    // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
+function render(props) {
+    const store = Vue.observable(props.store)
+        // 在 render 中创建 VueRouter，可以保证在卸载微应用时，移除 location 事件监听，防止事件污染
     router = new VueRouter({
         // 运行在主应用中时，添加路由命名空间 /vue
         base: window.__POWERED_BY_QIANKUN__ ? '/micro' : '/',
@@ -25,6 +32,7 @@ function render() {
     // 挂载应用
     instance = new Vue({
         router,
+        store,
         render: (h) => h(App)
     }).$mount('#micro')
 }

@@ -1,13 +1,17 @@
 <template>
   <div id="micro">
    <router-view></router-view>
+   <!-- <section v-show='!$route.name' id='frame' /> 主应用配置显示子应用容器 -->
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  mounted() {
+    this.$utils.timeFormat(new Date())
+  }
 }
 </script>
 
