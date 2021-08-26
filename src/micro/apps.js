@@ -12,7 +12,7 @@ const apps = [
         container: '#frame',
         activeRule: '/micro'
             // props: {
-            //     store //共享主应用的store实例
+            //     store // 主应用配置共享主应用的store实例
             //   }
     }
 ]

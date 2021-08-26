@@ -10,8 +10,10 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "pro-fn-tool": "^1.0.0",
+    "qiankun": "^2.4.9",
     "vue": "^2.6.11",
-    "vue-router": "^3.5.1"
+    "vue-router": "^3.5.1",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.0",
@@ -26,7 +28,9 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "pro-fn-tool": "^1.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "qiankun": "^2.4.9",
+    "vue-template-compiler": "^2.6.11",
+    "vuex": "^3.6.2"
   },
   "eslintConfig": {
     "root": true,
