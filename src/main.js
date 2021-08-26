@@ -20,24 +20,24 @@ let router = null
      * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
      */
 Vue.use(Vuex)
-    // const store = new Vuex.Store({
-    //     modules: {
-    //         micro: {
-    //             state: {
-    //                 count: 0
-    //             },
-    //             mutations: {
-    //                 SET_COUNT(state, data) {
-    //                     state.count = data
-    //                 }
-    //             }
-    //         }
-    //     },
-    //     getters: {
-    //         coun: state => state.micro.count
-    //     }
+const store = new Vuex.Store({
+    modules: {
+        micro: {
+            state: {
+                count: 0
+            },
+            mutations: {
+                SET_COUNT(state, data) {
+                    state.count = data
+                }
+            }
+        }
+    },
+    getters: {
+        coun: state => state.micro.count
+    }
 
-// })
+})
 
 function render(props) {
     const storeP = props ? Vue.observable(props.store) : {}
@@ -61,7 +61,7 @@ function render(props) {
 
 // 独立运行时，直接挂载应用
 if (!window.__POWERED_BY_QIANKUN__) {
-    render()
+    render({ store })
 }
 console.log(window.__POWERED_BY_QIANKUN__, 'window.__POWERED_BY_QIANKUN__')
     /**
